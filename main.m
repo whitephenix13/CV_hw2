@@ -13,12 +13,14 @@ if(strcmp(test ,'gaussConv'))
         tit = [num2str(sigmas_x(i)),' ',num2str(sigmas_y(i)),' ',num2str(kernel_size(i))];
         title(tit);
     end
-
-    H = fspecial('gaussian');
+    
+    matlab_sigma = 20;
+    matlab_hsize = 30;
+    H = fspecial('gaussian',matlab_hsize,matlab_sigma);
     res = imfilter(image, H);
-    subplot((n+1)/2,(n+1)/2,n+1);
+    subplot((n+2)/2,(n+2)/2,n+1);
     imshow(res, []);
-    title('original matlab')
+    title(strcat('original matlab: ',num2str(matlab_sigma),'-', num2str(matlab_sigma),'-',num2str(matlab_hsize)));
     
 elseif(strcmp(test,'gaussDer'))
     image = imread('cameraman.tif');
