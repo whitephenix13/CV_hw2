@@ -16,7 +16,7 @@ for i= 1:size(image,1)
             end
         end
         result=sort(filter);
-        %place the median in the imOut
+        %place the median or the average in the imOut
         if(strcmp(kernel_type, 'median'))
             B(i,j) = result((kernel_size*kernel_size+1)/2);
         elseif(strcmp(kernel_type, 'box'))

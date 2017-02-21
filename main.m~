@@ -1,4 +1,4 @@
-test = 'compute_gradient';%denoise myHistMatching compute_gradient unsharp compute_LoG
+test = 'unsharp';%denoise myHistMatching compute_gradient unsharp compute_LoG
 if(strcmp(test ,'denoise'))
     I = imread('Images/image2.jpeg');
     gray_I = rgb2gray(I);
@@ -10,20 +10,20 @@ elseif(strcmp(test ,'myHistMatching'))
     match_im = myHistMatching( input, reference );
 elseif(strcmp(test ,'compute_gradient'))
     input = imread('Images/image3.jpeg');
-    [gx, gy, im_magnitude, im_direction] = compute_gradient(input);
+    gx, gy, im_magnitude, im_direction = compute_gradient(input);
     figure;
+    subplot(2,2,1)
+    imshow(gx,[]);
+    title('gradient in x direction')
+    subplot(2,2,2)
+    imshow(im_magnitude,[]);
+    title('image_')
     subplot(2,2,1)
     imshow(gx,[]);
     title('gradient in x direction')
     subplot(2,2,2)
     imshow(gy,[]);
     title('gradient in y direction')
-    subplot(2,2,3)
-    imshow(im_magnitude,[]);
-    title('image magnitude')
-    subplot(2,2,4)
-    imshow(im_direction,[]);
-    title('image direction')
 elseif(strcmp(test ,'unsharp'))
     image = imread('Images/image4.jpeg');
     sigma= 50;
