@@ -1,4 +1,4 @@
-test = 'compute_gradient';%denoise myHistMatching compute_gradient unsharp compute_LoG
+test = 'compute_LoG';%denoise myHistMatching compute_gradient unsharp compute_LoG
 if(strcmp(test ,'denoise'))
     I = imread('Images/image2.jpeg');
     gray_I = rgb2gray(I);
@@ -38,5 +38,8 @@ elseif(strcmp(test ,'unsharp'))
     imshow(unsharp_im,[]);
     title('unsharp')
 elseif(strcmp(test ,'compute_LoG'))
-
+    image = imread('Images/image1.jpeg');
+    g_image = rgb2gray(image);
+    [result] = compute_LoG(g_image, '1');
+    imshow(result, []);
 end
